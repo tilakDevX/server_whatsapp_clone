@@ -24,4 +24,18 @@ const { ConversationModel } = require("../Models/conversation.model");
   }
 };
 
-module.exports = {newConversation}
+const getConversation = async (req, res) => {
+  try {
+    const conversation = await ConversationModel.findOne({
+      members: { $all: [req.body.senderId, req.body.receiverId] },
+    });
+    // console.log("conversations: ",conversation)
+    res.status(200).json(conversation);
+  } catch (error) {
+    res.status(500).json({
+      "error while getting conversation: ": error.message,
+    });
+  }
+};
+
+module.exports = {newConversation,getConversation}

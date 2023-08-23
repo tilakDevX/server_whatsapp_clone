@@ -21,7 +21,7 @@ const userController = async (req, res) => {
 const getUser = async (request, response) => {
   try {
     const user = await UserModel.find();
-    console.log(user);
+    // console.log(user);
     response.send(user);
   } catch (error) {
     console.log('error while getting data from user');
