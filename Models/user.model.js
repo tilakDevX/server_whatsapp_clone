@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 
-const userSchema = {
+const userSchema = new mongoose.Schema({
     iss:{type: String},
     azp:{type: String},
     aud:{type: String},
@@ -17,7 +17,7 @@ const userSchema = {
     iat:{type: Number },
     exp:{type: Number },
     jti:{type: String },
-}
+})
 
 
 
