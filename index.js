@@ -10,12 +10,16 @@ app.use(cors());
 
 app.use("/user", userRouter);
 
-app.listen(8500, async () => {
-  try {
-    await connection;
-    console.log("Successfully connected to db.");
-  } catch (error) {
-    console.log("Error: while connecting to db: ", error);
-  }
-  console.log("Server started at 8500 port");
+const PORT = 8500;
+
+connection.once("open", () => {
+  console.log("Successfully connected to db.");
+
+  app.listen(PORT, () => {
+    console.log(`Server started at port ${PORT}`);
+  });
+});
+
+connection.on("error", (error) => {
+  console.error("Error connecting to db:", error);
 });
