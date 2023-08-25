@@ -16,7 +16,7 @@ app.use("/user", userRouter);
 const httpServer = createServer(app); // Use the 'express' app for the HTTP server
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://ui-whatsapp-clone.netlify.app/"],
   },
 });
 
